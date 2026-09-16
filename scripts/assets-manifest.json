@@ -1,0 +1,60 @@
+[
+  {
+    "path": "public/mediapipe/wasm/vision_wasm_internal.wasm",
+    "sha256": "cb3ec20026a9aecc2a81a93c25630ceb5389297ddb7a5f0bd61dd09cde606b9b",
+    "size": 11453626,
+    "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.32/wasm/vision_wasm_internal.wasm"
+  },
+  {
+    "path": "public/mediapipe/wasm/vision_wasm_nosimd_internal.wasm",
+    "sha256": "924274fcd5ac8985f6570a8573e7971b7bd2d580ba1b8f3beb0ba8f95db6347c",
+    "size": 10647962,
+    "url": "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.32/wasm/vision_wasm_nosimd_internal.wasm"
+  },
+  {
+    "path": "public/models/efficientdet_lite0_uint8.tflite",
+    "sha256": "2e04c53bfeac0ac2a30c057c7e2a777594ce39baaac35a92f74fb1e8c4fc4e0b",
+    "size": 4563519,
+    "url": "https://storage.googleapis.com/mediapipe-tasks/object_detector/efficientdet_lite0_uint8.tflite"
+  },
+  {
+    "path": "public/models/pose_landmarker_full.task",
+    "sha256": "5134a3aad27a58b93da0088d431f366da362b44e3ccfbe3462b3827a839011b1",
+    "size": 9398198,
+    "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task"
+  },
+  {
+    "path": "public/models/pose_landmarker_lite.task",
+    "sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+    "size": 5777746,
+    "url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task"
+  },
+  {
+    "path": "public/models/rtmpose-s-wholebody-0.bin",
+    "sha256": "d82f288f811cb6e3578f84fac8c12c2a858ba66568845ac75f23e7baaeecc8e4",
+    "size": 20971520,
+    "url": "https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-s_simcc-ucoco_dw-ucoco_270e-256x192-3fd922c8_20230728.zip",
+    "zip_member_suffix": "end2end.onnx",
+    "offset": 0
+  },
+  {
+    "path": "public/models/rtmpose-s-wholebody-1.bin",
+    "sha256": "f72b44da2525d697b68c44a1c4e42667ffc870c9716c2f4552cd987784002dd0",
+    "size": 12559955,
+    "url": "https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-s_simcc-ucoco_dw-ucoco_270e-256x192-3fd922c8_20230728.zip",
+    "zip_member_suffix": "end2end.onnx",
+    "offset": 20971520
+  },
+  {
+    "path": "public/models/yolo26n-reid.onnx",
+    "sha256": "8529c383197ae4c468eda535d1b165f8b4162cf17bf5fbcff49c7cb6455bc0bb",
+    "size": 9873245,
+    "url": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26n-reid.onnx"
+  },
+  {
+    "path": "public/onnx/ort-wasm-simd-threaded.wasm",
+    "sha256": "71aef04959c5c1b6de461b6538e2058e306610034a85aad2742d0c7fd4533fe4",
+    "size": 11210254,
+    "url": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort-wasm-simd-threaded.wasm"
+  }
+]

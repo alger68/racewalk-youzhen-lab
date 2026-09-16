@@ -182,7 +182,7 @@ export default function Home(){
  async function startTool(value:typeof tool){
   const v=video.current;if(!v||locked)return;v.pause();setMode("bio");
   if(tool===value){setTool(null);return;}
-  setPeopleScan(null);autoPeopleScan.current=false;
+  setPeopleScan(null);
   if(value==="roi"){
    if(r&&(r.frames.length||r.events.length)&&(dirty||!r.version))await save();
    const shown=await seekVideo(v,v.currentTime);setTime(shown.t);setLiveFrame(null);

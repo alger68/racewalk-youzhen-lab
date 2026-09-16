@@ -1,3 +1,4 @@
+import { pinnedModel } from "./model-cache";
 import { InferenceSession, Tensor, env } from "onnxruntime-web/wasm";
 import { decodeWholebody, wholebodyTensor, type WholebodyResult } from "./wholebody";
 import type { PixelFrame } from "./vision-protocol";
@@ -14,10 +15,9 @@ scope.onmessage=async({data})=>{
    env.wasm.wasmPaths={mjs:new URL("/onnx/ort-wasm-simd-threaded.mjs",data.baseUrl).href,wasm:new URL("/onnx/ort-wasm-simd-threaded.wasm",data.baseUrl).href};
    const sizes=[20971520,12559955],parts:Uint8Array[]=[];
    for(let i=0;i<sizes.length;i++){
-    scope.postMessage({id:data.id,progress:`正在下載第二套骨架模型 ${i+1}/${sizes.length}`});
-    const response=await fetch(new URL(`/models/rtmpose-s-wholebody-${i}.bin`,data.baseUrl));
-    if(!response.ok)throw new Error("第二套骨架模型下載失敗，請重試");
-    const part=new Uint8Array(await response.arrayBuffer());if(part.length!==sizes[i])throw new Error("第二套骨架模型下載不完整");parts.push(part);
+    scope.postMessage({id:data.id,progress:`正在讀取第二套骨架模型（快取優先） ${i+1}/${sizes.length}`});
+    const hashes=["d82f288f811cb6e3578f84fac8c12c2a858ba66568845ac75f23e7baaeecc8e4","f72b44da2525d697b68c44a1c4e42667ffc870c9716c2f4552cd987784002dd0"];
+    parts.push(await pinnedModel(new URL(`/models/rtmpose-s-wholebody-${i}.bin`,data.baseUrl).href,sizes[i],hashes[i]));
    }
    const bytes=new Uint8Array(sizes.reduce((a,b)=>a+b,0));bytes.set(parts[0]);bytes.set(parts[1],sizes[0]);
    scope.postMessage({id:data.id,progress:"正在啟動第二套骨架模型"});

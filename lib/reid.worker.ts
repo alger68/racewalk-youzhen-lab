@@ -1,3 +1,4 @@
+import { pinnedModel } from "./model-cache";
 import { InferenceSession, Tensor, env } from "onnxruntime-web/wasm";
 import { REID_SIZE, REID_SHA, reidTensor, reidEmbedding } from "./reid";
 import { sha256Portable } from "./browser-crypto";
@@ -10,11 +11,8 @@ scope.onmessage=async({data})=>{
   if(data.command==="init"){
    env.wasm.numThreads=1;env.wasm.proxy=false;
    env.wasm.wasmPaths={mjs:new URL("/onnx/ort-wasm-simd-threaded.mjs",data.baseUrl).href,wasm:new URL("/onnx/ort-wasm-simd-threaded.wasm",data.baseUrl).href};
-   scope.postMessage({id:data.id,progress:"正在下載人物外觀模型（約 10 MB）"});
-   const response=await fetch(new URL("/models/yolo26n-reid.onnx",data.baseUrl));
-   if(!response.ok)throw new Error("人物外觀模型下載失敗，請重試");
-   const bytes=new Uint8Array(await response.arrayBuffer());
-   if(bytes.length!==9873245||sha256Portable(bytes)!==REID_SHA)throw new Error("人物外觀模型完整性檢查未通過");
+   scope.postMessage({id:data.id,progress:"正在讀取人物外觀模型（優先使用已驗證快取）"});
+   const bytes=await pinnedModel(new URL("/models/yolo26n-reid.onnx",data.baseUrl).href,9873245,REID_SHA);
    scope.postMessage({id:data.id,progress:"正在啟動人物外觀模型"});
    session=await InferenceSession.create(bytes,{executionProviders:["wasm"],graphOptimizationLevel:"all"});
    scope.postMessage({id:data.id,result:true});return;

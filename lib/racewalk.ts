@@ -1,5 +1,5 @@
 import type { PoseVerification } from "./wholebody";
-export const ENGINE = "rw-2.9.2-contact-status";
+export const ENGINE = "rw-2.10.0-integrated";
 export type Side = "L" | "R";
 export type View = "side-left" | "side-right" | "front" | "rear";
 export type Verdict = "pending" | "clear" | "watch" | "concern" | "unknown";
@@ -32,7 +32,7 @@ export const EVENT_LABEL: Record<EventKind, string> = { IC: "首次接地", VERT
 export const VERDICT_LABEL: Record<Verdict, string> = { pending: "待人工複查", clear: "未見明顯疑慮", watch: "需要複查", concern: "明顯疑慮", unknown: "資料不足" };
 export const SPEED_LABEL = { easy: "Easy 輕鬆", race: "Race 比賽", fast: "Fast 加速" };
 export function defaults(): Settings {
-  return { athlete: "陳宥蓁", date: new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Taipei" }).format(new Date()), view: "side-left", direction: "right", pace: null, speed: "easy", fps: 60, sampleFps: 30, slow: 1, timingVerified: false, pain: "unknown", clearFeet: false, start: 0, end: 15, ground: null, roi: null, reviewer: "", groundStable:false, contactMethod:"hmm-ground-v1", smoothAngles:false, uncertaintyEnabled:false, pointSigmaPx:2 };
+  return { athlete: "未命名選手", date: new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Taipei" }).format(new Date()), view: "side-left", direction: "right", pace: null, speed: "easy", fps: 60, sampleFps: 30, slow: 1, timingVerified: false, pain: "unknown", clearFeet: false, start: 0, end: 15, ground: null, roi: null, reviewer: "", groundStable:false, contactMethod:"hmm-ground-v1", smoothAngles:false, uncertaintyEnabled:false, pointSigmaPx:2 };
 }
 export const finite = (n: unknown): n is number => typeof n === "number" && Number.isFinite(n);
 // Retain timestamps as gaps, never bridge another target's observations.

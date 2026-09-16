@@ -1,5 +1,5 @@
 {
-  "sites_commit": "eef68cdb40ef0671d068f02171bae88713a9c793",
+  "sites_commit": "dd2207c4adc767f50aaf70a5c4b8c638066089dc",
   "files": [
     {
       "path": ".gitignore",
@@ -15,7 +15,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "e41f2c63bfbecb5ded53d575d35b6fd2e74bd79ec985a95d4b7dff0827675264"
+      "sha256": "83fcf466d9316b3fecc5febe10302b24fded25fab14af0bb40056b9de075bd08"
     },
     {
       "path": "app/api/sessions/[id]/route.ts",
@@ -39,11 +39,11 @@
     },
     {
       "path": "app/layout.tsx",
-      "sha256": "cc8c447f1e934a8829a79d56b280bfc11cadc96482f2f7787f19ee6d80d017af"
+      "sha256": "29780b5e38f91d2cffab08ad9ad76c1f620bd8ba6ecad0420e027eefc30362dc"
     },
     {
       "path": "app/page.tsx",
-      "sha256": "6d16656a75da3530127c33916673bd31e912f4524614293c957840916f1d0141"
+      "sha256": "bf6f92ea08499609a6fab0d5385d4ec3d828be00d69c7a813c3e4f069570f00c"
     },
     {
       "path": "build/classic-worker-dev.ts",
@@ -71,7 +71,7 @@
     },
     {
       "path": "components/racewalk/panels.tsx",
-      "sha256": "70e71b658d1244d97c287f6fb1a88f46aa0f4fc521d33fd13774a72499d87b95"
+      "sha256": "edaeed1ec2c69927877c687202712ca0ed1bca910f5234affb1bf43dacf5e8cf"
     },
     {
       "path": "components/racewalk/plots.tsx",
@@ -343,11 +343,11 @@
     },
     {
       "path": "docs/measurement-methods.md",
-      "sha256": "e17836b8bf990cf9aa2fd721d51d5e972b9a5805a3903cb186080e3c48cc755c"
+      "sha256": "4ff7d80aefe0c060c9961a401bc082e9708959e0047223afdad875b56f6aabe9"
     },
     {
       "path": "docs/observation-recovery.md",
-      "sha256": "8eb48b5671303db79aebaa7a6425bfb78e62d1552e8a7c052e541667d8516beb"
+      "sha256": "b592346e90bc8fd8983d585edc804b695f576aa4b4c14939f4c1bde3a74f9c7a"
     },
     {
       "path": "docs/person-discovery.md",
@@ -390,6 +390,10 @@
       "sha256": "ad0936f84f1df79d3697bfbff9c18f8ad58431c1cbaf2359c6a853b0fcc9f28b"
     },
     {
+      "path": "lib/analysis-diagnostics.ts",
+      "sha256": "de9c692f81526e888a963bd6561a040445ae72c67cef73a95cb44b024a94b2ad"
+    },
+    {
       "path": "lib/browser-crypto.ts",
       "sha256": "bc5a2c2d886ce691e9cbe650e15e407f80815dbb4af9c1f237e5d1c8304f1050"
     },
@@ -418,6 +422,10 @@
       "sha256": "8464964cf18e4aa396f6758d69eff1b2b86716c6df43c653cebd65003b1fed98"
     },
     {
+      "path": "lib/model-cache.ts",
+      "sha256": "024122c2c998584f844ba8ca6ef732251ddc468535201113edc8e0c66cba3018"
+    },
+    {
       "path": "lib/observed-recovery.ts",
       "sha256": "fe8d961c3a178dc51dbf6fb5a89205fb35fac3ac5ed6fe2b1e715412d0cb99f4"
     },
@@ -435,7 +443,7 @@
     },
     {
       "path": "lib/racewalk.ts",
-      "sha256": "3f3e70c5e3d49718e8698d45fd91b6f4b35f541b1b42ad0cbd61eee2d5e4cd3e"
+      "sha256": "6d5c6578764402614a676f3f1144992e0534c6c39d29b5f5a4e21a7f6a08d13f"
     },
     {
       "path": "lib/reid-target-tracker.ts",
@@ -447,7 +455,7 @@
     },
     {
       "path": "lib/reid.worker.ts",
-      "sha256": "3bc9ede153d3ddf34ff7eed7e72fb63eee9e3ee5066c24c28f1f198304023463"
+      "sha256": "ca7689f21d257b9d92cb4eaa703ea32e7a3c7d7a9dd0237ad591750cf4f44961"
     },
     {
       "path": "lib/report-schema.ts",
@@ -466,6 +474,10 @@
       "sha256": "53f3d3d070f0a9082934da25b875f9499855c2b0693868dd28be8c23d8730f68"
     },
     {
+      "path": "lib/video-cadence.ts",
+      "sha256": "5c885d6a80c72c0516696cf7d831580526d9ea0b5cec5d16a64a9db8de579cad"
+    },
+    {
       "path": "lib/video-seek.ts",
       "sha256": "1d032cee996cd49f217c2f7a3a14febacc58a149b0fe85ca42df89925dce244e"
     },
@@ -479,7 +491,7 @@
     },
     {
       "path": "lib/vision.worker.ts",
-      "sha256": "b68c6f6a876e17ab974e5b195c4bd80c4c2f432f3b712e89924cfe35276600ca"
+      "sha256": "e51c781697cb52ab912bc8498e87aaa3a4aceccaf588854cab6573d7c5732b9f"
     },
     {
       "path": "lib/wholebody.ts",
@@ -487,7 +499,7 @@
     },
     {
       "path": "lib/wholebody.worker.ts",
-      "sha256": "1e5f72a850cc847b918762d4d1d19d6b5e1eb588849db12fad72b620b3f6894a"
+      "sha256": "96f7210faaf0fd892b74a8ca43808f3197dc94d252fe167c60c73fdd0c1c0a4f"
     },
     {
       "path": "lib/worker-channel.ts",
@@ -607,7 +619,7 @@
     },
     {
       "path": "scripts/test-core.mjs",
-      "sha256": "ee8ef43fee775349883dd34814ba3f51c5012b0655950306182d5ac9375820e0"
+      "sha256": "cf77efa732616a434026608dd516d20f0fc677f5dfaa5d4e95ffe983b1560917"
     },
     {
       "path": "tests/browser-crypto.test.cjs",
@@ -624,6 +636,10 @@
     {
       "path": "tests/fixtures/upper-body-duplicates.json",
       "sha256": "8355a4312c3231d9d7120699ae76a0bd295b186a706455d8ce000efbabbbdfb1"
+    },
+    {
+      "path": "tests/integration-upgrades.test.cjs",
+      "sha256": "ddb96dfc75d7611871c8c165971d4aa653f708684f9878cebdf5fff3c182d0ea"
     },
     {
       "path": "tests/measurement.test.cjs",

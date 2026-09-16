@@ -1,3 +1,4 @@
+import { pinnedModel } from "./model-cache";
 // Bundle as a classic worker: MediaPipe's WASM loader uses importScripts().
 // No inference or model initialization runs on the page's UI thread.
 import { FilesetResolver, ObjectDetector, PoseLandmarker } from "@mediapipe/tasks-vision";
@@ -16,9 +17,9 @@ scope.onmessage=async({data})=>{
    // CPU avoids device-specific GPU stalls, including the quantized detector.
    // Each worker owns one model and is discarded on completion or cancellation.
    model=kind==="pose"?await PoseLandmarker.createFromOptions(vision,{canvas,
-    baseOptions:{modelAssetPath:new URL("/models/pose_landmarker_full.task",data.baseUrl).href,delegate:"CPU"},runningMode:"IMAGE",numPoses:MAX_POSES,minPoseDetectionConfidence:.6,minPosePresenceConfidence:.6,minTrackingConfidence:.6
+    baseOptions:{modelAssetBuffer:await pinnedModel(new URL("/models/pose_landmarker_full.task",data.baseUrl).href,9398198,"5134a3aad27a58b93da0088d431f366da362b44e3ccfbe3462b3827a839011b1"),delegate:"CPU"},runningMode:"IMAGE",numPoses:MAX_POSES,minPoseDetectionConfidence:.6,minPosePresenceConfidence:.6,minTrackingConfidence:.6
    }):await ObjectDetector.createFromOptions(vision,{canvas,
-    baseOptions:{modelAssetPath:new URL("/models/efficientdet_lite0_uint8.tflite",data.baseUrl).href,delegate:"CPU"},runningMode:"IMAGE",categoryAllowlist:["person"],scoreThreshold:.35,maxResults:30
+    baseOptions:{modelAssetBuffer:await pinnedModel(new URL("/models/efficientdet_lite0_uint8.tflite",data.baseUrl).href,4563519,"2e04c53bfeac0ac2a30c057c7e2a777594ce39baaac35a92f74fb1e8c4fc4e0b"),delegate:"CPU"},runningMode:"IMAGE",categoryAllowlist:["person"],scoreThreshold:.35,maxResults:30
    });
    scope.postMessage({id:data.id,result:true});return;
   }

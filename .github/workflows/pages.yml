@@ -34,8 +34,6 @@ jobs:
       - run: pnpm exec tsc --noEmit
       - run: pnpm build:pages
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: pages-dist

@@ -12,7 +12,7 @@ scope.onmessage=async({data})=>{
   if(data.command==="init"){
    env.wasm.numThreads=1;env.wasm.proxy=false;
    // Explicit same-origin paths also work in a bundled classic worker.
-   env.wasm.wasmPaths={mjs:new URL("/onnx/ort-wasm-simd-threaded.mjs",data.baseUrl).href,wasm:new URL("/onnx/ort-wasm-simd-threaded.wasm",data.baseUrl).href};
+   env.wasm.wasmPaths={mjs:new URL("onnx/ort-wasm-simd-threaded.mjs",data.baseUrl).href,wasm:new URL("onnx/ort-wasm-simd-threaded.wasm",data.baseUrl).href};
    const sizes=[20971520,12559955],parts:Uint8Array[]=[];
    for(let i=0;i<sizes.length;i++){
     scope.postMessage({id:data.id,progress:`正在讀取第二套骨架模型（快取優先） ${i+1}/${sizes.length}`});

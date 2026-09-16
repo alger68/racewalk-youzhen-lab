@@ -13,13 +13,13 @@ scope.onmessage=async({data})=>{
    if(typeof OffscreenCanvas==="undefined")throw new Error("此瀏覽器不支援背景影像分析，請更新瀏覽器。");
    const canvas=new OffscreenCanvas(1,1);
    if(!canvas.getContext("webgl2"))throw new Error("此瀏覽器的背景 WebGL2 不可用，無法啟動骨架模型。請開啟瀏覽器硬體加速後重新載入網站，或改用支援背景 WebGL2 的瀏覽器再啟動自動分析。");
-   const vision=await FilesetResolver.forVisionTasks(new URL("/mediapipe/wasm",data.baseUrl).href);
+   const vision=await FilesetResolver.forVisionTasks(new URL("mediapipe/wasm",data.baseUrl).href);
    // CPU avoids device-specific GPU stalls, including the quantized detector.
    // Each worker owns one model and is discarded on completion or cancellation.
    model=kind==="pose"?await PoseLandmarker.createFromOptions(vision,{canvas,
-    baseOptions:{modelAssetBuffer:await pinnedModel(new URL("/models/pose_landmarker_full.task",data.baseUrl).href,9398198,"5134a3aad27a58b93da0088d431f366da362b44e3ccfbe3462b3827a839011b1"),delegate:"CPU"},runningMode:"IMAGE",numPoses:MAX_POSES,minPoseDetectionConfidence:.6,minPosePresenceConfidence:.6,minTrackingConfidence:.6
+    baseOptions:{modelAssetBuffer:await pinnedModel(new URL("models/pose_landmarker_full.task",data.baseUrl).href,9398198,"5134a3aad27a58b93da0088d431f366da362b44e3ccfbe3462b3827a839011b1"),delegate:"CPU"},runningMode:"IMAGE",numPoses:MAX_POSES,minPoseDetectionConfidence:.6,minPosePresenceConfidence:.6,minTrackingConfidence:.6
    }):await ObjectDetector.createFromOptions(vision,{canvas,
-    baseOptions:{modelAssetBuffer:await pinnedModel(new URL("/models/efficientdet_lite0_uint8.tflite",data.baseUrl).href,4563519,"2e04c53bfeac0ac2a30c057c7e2a777594ce39baaac35a92f74fb1e8c4fc4e0b"),delegate:"CPU"},runningMode:"IMAGE",categoryAllowlist:["person"],scoreThreshold:.35,maxResults:30
+    baseOptions:{modelAssetBuffer:await pinnedModel(new URL("models/efficientdet_lite0_uint8.tflite",data.baseUrl).href,4563519,"2e04c53bfeac0ac2a30c057c7e2a777594ce39baaac35a92f74fb1e8c4fc4e0b"),delegate:"CPU"},runningMode:"IMAGE",categoryAllowlist:["person"],scoreThreshold:.35,maxResults:30
    });
    scope.postMessage({id:data.id,result:true});return;
   }

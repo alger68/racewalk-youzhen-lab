@@ -12,23 +12,24 @@ import { REID_SIZE } from "./reid";
 import { restoreWholebody, verifyWholebody, wholebodyRegion, wholebodyRetrySides, verifyWholebodyRetry, type AffineRegion, type WholebodyResult } from "./wholebody";
 
 import { seekVideo } from "./video-seek";
+import { assetBaseUrl } from "./asset-url";
 export { seekVideo } from "./video-seek";
 
 async function createModel(kind:ModelKind,signal:AbortSignal){
  if(signal.aborted)throw signal.reason;
  if(typeof Worker==="undefined"||typeof OffscreenCanvas==="undefined")throw new Error("此瀏覽器不支援背景分析，請更新瀏覽器；仍可手動圈選與標點。");
  const channel=new WorkerChannel(new Worker(import.meta.env.DEV?"/__racewalk_worker__/vision.js":visionWorkerUrl),signal);
- try{await channel.call({command:"init",kind,baseUrl:window.location.origin},[],25000,kind==="pose"?"骨架模型載入":"人物模型載入");return channel;}
+ try{await channel.call({command:"init",kind,baseUrl:assetBaseUrl(import.meta.env.BASE_URL,window.location.href)},[],25000,kind==="pose"?"骨架模型載入":"人物模型載入");return channel;}
  catch(e){channel.close();throw e;}
 }
 async function createWholebodyModel(signal:AbortSignal,onProgress:(stage:string)=>void){
  const channel=new WorkerChannel(new Worker(import.meta.env.DEV?"/__racewalk_worker__/wholebody.js":wholebodyWorkerUrl),signal,onProgress);
- try{await channel.call({command:"init",baseUrl:window.location.origin},[],90000,"第二套骨架模型載入");return channel;}
+ try{await channel.call({command:"init",baseUrl:assetBaseUrl(import.meta.env.BASE_URL,window.location.href)},[],90000,"第二套骨架模型載入");return channel;}
  catch(e){channel.close();throw e;}
 }
 async function createReidModel(signal:AbortSignal,onProgress:(stage:string)=>void){
  const channel=new WorkerChannel(new Worker(import.meta.env.DEV?"/__racewalk_worker__/reid.js":reidWorkerUrl),signal,onProgress);
- try{await channel.call({command:"init",baseUrl:window.location.origin},[],90000,"人物外觀模型載入");return channel;}
+ try{await channel.call({command:"init",baseUrl:assetBaseUrl(import.meta.env.BASE_URL,window.location.href)},[],90000,"人物外觀模型載入");return channel;}
  catch(e){channel.close();throw e;}
 }
 function reidPixels(video:HTMLVideoElement,source:ReturnType<typeof sourceCanvas>,c:TargetCandidate):PixelFrame{

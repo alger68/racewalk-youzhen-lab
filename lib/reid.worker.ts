@@ -10,9 +10,9 @@ scope.onmessage=async({data})=>{
  try{
   if(data.command==="init"){
    env.wasm.numThreads=1;env.wasm.proxy=false;
-   env.wasm.wasmPaths={mjs:new URL("/onnx/ort-wasm-simd-threaded.mjs",data.baseUrl).href,wasm:new URL("/onnx/ort-wasm-simd-threaded.wasm",data.baseUrl).href};
+   env.wasm.wasmPaths={mjs:new URL("onnx/ort-wasm-simd-threaded.mjs",data.baseUrl).href,wasm:new URL("onnx/ort-wasm-simd-threaded.wasm",data.baseUrl).href};
    scope.postMessage({id:data.id,progress:"正在讀取人物外觀模型（優先使用已驗證快取）"});
-   const bytes=await pinnedModel(new URL("/models/yolo26n-reid.onnx",data.baseUrl).href,9873245,REID_SHA);
+   const bytes=await pinnedModel(new URL("models/yolo26n-reid.onnx",data.baseUrl).href,9873245,REID_SHA);
    scope.postMessage({id:data.id,progress:"正在啟動人物外觀模型"});
    session=await InferenceSession.create(bytes,{executionProviders:["wasm"],graphOptimizationLevel:"all"});
    scope.postMessage({id:data.id,result:true});return;
